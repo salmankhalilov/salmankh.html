@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salman Khalilov — Tech Entrepreneur &amp; AI Developer</title>
+<meta name="description" content="Salman Khalilov — Tech Entrepreneur &amp; AI Developer from Kazakhstan. Co-founder of rinzoAI and iStart Club.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#07080c;
+  --surface:#10121a;
+  --surface-2:#151926;
+  --line:#1f2330;
+  --line-soft:#1a1d28;
+  --cyan:#52e8d4;
+  --cyan-dim:#2c8f83;
+  --violet:#8b7fff;
+  --violet-dim:#564b9e;
+  --text:#eef0f6;
+  --muted:#8a90a6;
+  --muted-2:#5d6275;
+  --display:'Space Grotesk', sans-serif;
+  --body:'Inter', sans-serif;
+  --mono:'JetBrains Mono', monospace;
+  --maxw:1180px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--cyan);color:#06080a;}
+
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+
+/* faint grid texture across whole page */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(82,232,212,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(82,232,212,0.035) 1px, transparent 1px);
+  background-size:64px 64px;
+  pointer-events:none;
+  z-index:0;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
+}
+
+button:focus-visible, a:focus-visible{
+  outline:2px solid var(--cyan);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* ============ TYPE HELPERS ============ */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:"";
+  width:18px;height:1px;
+  background:var(--cyan);
+  display:inline-block;
+}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-0.01em;}
+.section-title{
+  font-size:clamp(28px,3.4vw,42px);
+  margin-bottom:14px;
+  color:var(--text);
+}
+.section-lede{
+  color:var(--muted);
+  max-width:560px;
+  font-size:16px;
+  margin-bottom:56px;
+}
+.mono-tag{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:0.04em;
+}
+
+/* ============ NAV ============ */
+header.nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;
+  backdrop-filter:blur(14px) saturate(140%);
+  background:rgba(7,8,12,0.72);
+  border-bottom:1px solid var(--line-soft);
+  transition:border-color .3s ease;
+}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 32px;
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:var(--mono);
+  font-size:15px;
+  color:var(--text);
+  letter-spacing:0.02em;
+  display:flex;align-items:center;gap:8px;
+}
+.logo .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
+nav.links{display:flex;gap:36px;}
+nav.links a{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:0.03em;
+  position:relative;
+  padding:4px 0;
+  transition:color .25s ease;
+}
+nav.links a:hover{color:var(--text);}
+nav.links a::after{
+  content:"";position:absolute;bottom:0;left:0;
+  width:0;height:1px;background:var(--cyan);
+  transition:width .25s ease;
+}
+nav.links a:hover::after{width:100%;}
+.nav-cta{
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--bg);
+  background:var(--cyan);
+  padding:9px 18px;
+  border-radius:3px;
+  letter-spacing:0.03em;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(82,232,212,0.25);}
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:32px;height:32px;
+  background:none;border:none;cursor:pointer;
+  padding:0;
+}
+.nav-toggle span{
+  display:block;width:100%;height:1.5px;background:var(--text);
+  transition:transform .25s ease, opacity .25s ease;
+}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-links{
+  display:none;
+  flex-direction:column;
+  max-height:0;
+  overflow:hidden;
+  background:rgba(7,8,12,0.98);
+  border-bottom:1px solid var(--line-soft);
+  transition:max-height .3s ease;
+}
+.mobile-links.open{max-height:320px;}
+.mobile-links a{
+  font-family:var(--mono);font-size:14px;color:var(--muted);
+  padding:16px 32px;border-bottom:1px solid var(--line-soft);
+  letter-spacing:0.03em;
+}
+.mobile-links a:hover{color:var(--cyan);background:rgba(82,232,212,0.04);}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:72px;
+}
+.hero-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 32px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  align-items:center;
+  gap:24px;
+  position:relative;
+  z-index:2;
+}
+.hero-canvas-wrap{
+  position:absolute;
+  top:50%;right:-4%;
+  width:62%;height:780px;
+  transform:translateY(-50%);
+  z-index:1;
+  pointer-events:none;
+  opacity:0.92;
+}
+#hero-canvas{width:100%;height:100%;display:block;}
+
+.hero-loc{
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--muted);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-loc::before{
+  content:"";width:7px;height:7px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 10px var(--cyan);
+  animation:pulse-dot 2.4s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:0.35;}}
+
+.hero h1{
+  font-size:clamp(42px,6.2vw,76px);
+  line-height:0.98;
+  margin-bottom:8px;
+  background:linear-gradient(120deg, #fdfeff 30%, var(--cyan) 70%, var(--violet) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero .role{
+  font-family:var(--display);
+  font-size:clamp(18px,2vw,24px);
+  color:var(--text);
+  font-weight:500;
+  margin-bottom:26px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.hero .role .sep{color:var(--violet);}
+.hero p.intro{
+  max-width:480px;
+  color:var(--muted);
+  font-size:16.5px;
+  margin-bottom:40px;
+}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;}
+.btn{
+  font-family:var(--mono);
+  font-size:13.5px;
+  letter-spacing:0.03em;
+  padding:14px 26px;
+  border-radius:3px;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+.btn-primary{background:var(--cyan);color:#06080a;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(82,232,212,0.25);}
+.btn-ghost{border-color:var(--line);color:var(--text);}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);}
+
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(4,auto);
+  gap:40px;
+  border-top:1px solid var(--line-soft);
+  padding-top:28px;
+  max-width:560px;
+}
+.stat .num{
+  font-family:var(--display);
+  font-size:28px;
+  font-weight:600;
+  color:var(--text);
+}
+.stat .num span{color:var(--cyan);}
+.stat .label{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--muted-2);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-top:4px;
+}
+
+.scroll-cue{
+  position:absolute;bottom:36px;left:32px;
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:11px;color:var(--muted-2);
+  letter-spacing:0.12em;text-transform:uppercase;
+  z-index:2;
+}
+.scroll-cue .line{width:1px;height:34px;background:linear-gradient(to bottom, var(--cyan), transparent);position:relative;overflow:hidden;}
+.scroll-cue .line::after{
+  content:"";position:absolute;top:0;left:0;width:100%;height:10px;
+  background:var(--cyan);
+  animation:scroll-move 1.8s ease-in-out infinite;
+}
+@keyframes scroll-move{0%{top:-10px;}100%{top:34px;}}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-stagger > *{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1);}
+.reveal-stagger.in > *{opacity:1;transform:translateY(0);}
+
+/* ============ SECTION GENERAL ============ */
+section{
+  position:relative;
+  z-index:2;
+  padding:140px 0;
+  border-top:1px solid var(--line-soft);
+}
+
+/* ============ ABOUT ============ */
+.about-grid{
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:80px;
+  align-items:start;
+}
+.about-photo{
+  position:relative;
+  border-radius:6px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+.about-photo img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(0.15) contrast(1.05);
+  aspect-ratio:3/4;
+}
+.about-photo .frame-corner{
+  position:absolute;width:22px;height:22px;
+  border:1.5px solid var(--cyan);
+  opacity:0.85;
+}
+.about-photo .tl{top:10px;left:10px;border-right:none;border-bottom:none;}
+.about-photo .br{bottom:10px;right:10px;border-left:none;border-top:none;}
+.about-caption{
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--muted-2);
+  letter-spacing:0.03em;
+  margin-top:14px;
+  line-height:1.5;
+}
+.about-text p{color:var(--muted);font-size:16.5px;margin-bottom:20px;max-width:560px;}
+.about-text p strong{color:var(--text);font-weight:500;}
+.about-pillars{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  margin-top:44px;
+  background:var(--line-soft);
+  border:1px solid var(--line-soft);
+}
+.pillar{
+  background:var(--surface);
+  padding:24px 22px;
+}
+.pillar .pillar-num{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:0.1em;margin-bottom:10px;display:block;}
+.pillar h4{font-family:var(--display);font-size:16px;font-weight:600;margin-bottom:6px;}
+.pillar p{font-size:13.5px;color:var(--muted);line-height:1.5;}
+
+/* ============ VENTURES / TIMELINE ============ */
+.timeline{position:relative;max-width:820px;}
+.timeline::before{
+  content:"";position:absolute;left:10px;top:6px;bottom:6px;width:1px;
+  background:linear-gradient(to bottom, var(--cyan), var(--line) 90%);
+}
+.t-item{position:relative;padding-left:48px;padding-bottom:56px;}
+.t-item:last-child{padding-bottom:0;}
+.t-dot{
+  position:absolute;left:0;top:4px;
+  width:21px;height:21px;border-radius:50%;
+  background:var(--surface);border:1.5px solid var(--cyan);
+  display:flex;align-items:center;justify-content:center;
+}
+.t-dot::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);}
+.t-period{font-family:var(--mono);font-size:12px;color:var(--muted-2);letter-spacing:0.05em;margin-bottom:8px;text-transform:uppercase;}
+.t-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:28px 30px;
+  transition:border-color .25s ease, transform .25s ease;
+}
+.t-card:hover{border-color:var(--cyan-dim);transform:translateX(4px);}
+.t-role{font-family:var(--display);font-size:19px;font-weight:600;margin-bottom:3px;}
+.t-org{font-family:var(--mono);font-size:13px;color:var(--cyan);margin-bottom:14px;display:inline-block;}
+.t-desc{color:var(--muted);font-size:15px;margin-bottom:16px;max-width:560px;}
+.t-link{
+  font-family:var(--mono);font-size:12px;color:var(--violet);
+  display:inline-flex;align-items:center;gap:6px;
+  border-bottom:1px solid transparent;
+  transition:border-color .2s ease;
+}
+.t-link:hover{border-color:var(--violet);}
+
+/* ============ SKILLS ============ */
+.skills-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;
+  background:var(--line-soft);
+  border:1px solid var(--line-soft);
+}
+.skill-col{background:var(--surface);padding:36px 32px;}
+.skill-col h4{
+  font-family:var(--mono);font-size:12px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--muted-2);margin-bottom:24px;
+  display:flex;align-items:center;gap:10px;
+}
+.skill-col h4::before{content:"";width:6px;height:6px;background:var(--violet);display:inline-block;}
+.tag-list{display:flex;flex-wrap:wrap;gap:9px;}
+.tag{
+  font-family:var(--mono);font-size:12.5px;
+  padding:8px 13px;border:1px solid var(--line);border-radius:3px;
+  color:var(--text);
+  transition:border-color .2s ease, color .2s ease, background .2s ease;
+}
+.tag:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(82,232,212,0.06);}
+
+.lang-row{margin-bottom:18px;}
+.lang-row:last-child{margin-bottom:0;}
+.lang-top{display:flex;justify-content:space-between;margin-bottom:8px;}
+.lang-name{font-size:14.5px;color:var(--text);font-weight:500;}
+.lang-level{font-family:var(--mono);font-size:11.5px;color:var(--muted-2);}
+.lang-bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;}
+.lang-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1);}
+
+/* ============ ACHIEVEMENTS ============ */
+.ach-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:24px;
+}
+.ach-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  transition:border-color .25s ease, transform .25s ease;
+}
+.ach-card:hover{border-color:var(--cyan-dim);transform:translateY(-3px);}
+.ach-icon{
+  width:38px;height:38px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;
+  color:var(--cyan);
+  font-family:var(--mono);font-size:14px;
+}
+.ach-card h4{font-family:var(--display);font-size:17px;font-weight:600;margin-bottom:8px;}
+.ach-card p{color:var(--muted);font-size:14.5px;}
+.ach-photo{
+  grid-column:span 3;
+  border-radius:6px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  position:relative;
+  min-height:340px;
+}
+.ach-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:contrast(1.05);}
+.ach-photo .ach-photo-tag{
+  position:relative;z-index:2;
+  background:linear-gradient(to top, rgba(7,8,12,0.92), transparent);
+  padding:60px 22px 18px;
+  margin-top:auto;
+}
+.ach-photo{display:flex;flex-direction:column;}
+.ach-photo-tag .tag-label{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;}
+.ach-photo-tag .tag-text{font-family:var(--display);font-size:16px;font-weight:600;}
+
+/* ============ EDUCATION ============ */
+.edu-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  border:1px solid var(--line);
+  background:var(--surface);
+  border-radius:6px;
+  padding:40px 44px;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.edu-card h3{font-family:var(--display);font-size:22px;font-weight:600;margin-bottom:10px;max-width:480px;}
+.edu-card .edu-sub{color:var(--muted);font-size:14.5px;}
+.edu-status{
+  font-family:var(--mono);font-size:12px;color:var(--cyan);
+  border:1px solid var(--cyan-dim);
+  padding:8px 16px;border-radius:20px;letter-spacing:0.05em;
+}
+
+/* ============ CONTACT ============ */
+.contact-section{
+  border-bottom:none;
+  text-align:left;
+}
+.contact-inner{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:60px;
+  align-items:end;
+}
+.contact-inner h2{
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.05;
+  margin-bottom:24px;
+}
+.contact-inner h2 .accent{color:var(--cyan);}
+.contact-inner p.contact-lede{color:var(--muted);max-width:440px;margin-bottom:36px;font-size:16px;}
+.contact-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-soft);}
+.contact-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0;
+  border-bottom:1px solid var(--line-soft);
+  transition:padding-left .25s ease;
+}
+.contact-row:hover{padding-left:8px;}
+.contact-row .c-label{font-family:var(--mono);font-size:11.5px;color:var(--muted-2);letter-spacing:0.08em;text-transform:uppercase;}
+.contact-row .c-value{font-family:var(--display);font-size:18px;font-weight:500;}
+.contact-row a.c-value:hover{color:var(--cyan);}
+.contact-row .c-arrow{color:var(--cyan);font-family:var(--mono);opacity:0;transition:opacity .25s ease;}
+.contact-row:hover .c-arrow{opacity:1;}
+
+footer{
+  border-top:1px solid var(--line-soft);
+  padding:32px 0;
+}
+.footer-inner{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:12px;color:var(--muted-2);
+  flex-wrap:wrap;gap:12px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-canvas-wrap{position:relative;width:100%;height:340px;top:auto;right:auto;transform:none;margin-top:20px;order:3;}
+  .hero-stats{grid-template-columns:repeat(2,auto);row-gap:24px;}
+  .about-grid{grid-template-columns:1fr;gap:48px;}
+  .about-photo{max-width:340px;}
+  .skills-grid{grid-template-columns:1fr;}
+  .ach-grid{grid-template-columns:1fr;}
+  .ach-photo{grid-column:span 1;}
+  .contact-inner{grid-template-columns:1fr;}
+  nav.links{display:none;}
+  .nav-cta{font-size:11.5px;padding:8px 14px;}
+  .nav-toggle{display:flex;}
+  .mobile-links{display:flex;}
+}
+@media (max-width:600px){
+  .wrap, .nav-inner, .hero-inner{padding-left:20px;padding-right:20px;}
+  section{padding:90px 0;}
+  .edu-card{flex-direction:column;align-items:flex-start;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="dot"></span>SALMAN.KHALILOV</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#ventures">Ventures</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-links" id="mobileLinks">
+    <a href="#about">About</a>
+    <a href="#ventures">Ventures</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" style="border-top:none;">
+    <div class="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-loc">Almaty, Kazakhstan</div>
+        <h1>Salman<br>Khalilov</h1>
+        <div class="role">Tech Entrepreneur <span class="sep">/</span> AI Developer</div>
+        <p class="intro">Ambitious 17-year-old building applied AI products and youth-led communities — currently shipping automation tools for businesses and mentoring the next generation of builders in Kazakhstan, with sights set on higher education in the United States.</p>
+        <div class="hero-ctas">
+          <a href="#ventures" class="btn btn-primary">View my work →</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="num"><span>17</span></div><div class="label">Years old</div></div>
+          <div class="stat"><div class="num">2</div><div class="label">Co-founded ventures</div></div>
+          <div class="stat"><div class="num">4</div><div class="label">Languages spoken</div></div>
+          <div class="stat"><div class="num">6.0</div><div class="label">IELTS Band</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="about-photo">
+            <div class="frame-corner tl"></div>
+            <div class="frame-corner br"></div>
+            <img src="WhatsApp Image 2026-06-20 at 10.56.12.jpeg" alt="Salman Khalilov at a national AI &amp; Digital innovation forum in Kazakhstan">
+          </div>
+          <p class="about-caption">REPRESENTING KAZAKHSTAN'S YOUTH TECH SCENE — NATIONAL AI &amp; DIGITAL INNOVATION FORUM</p>
+        </div>
+        <div class="reveal">
+          <div class="eyebrow">Who I am</div>
+          <h2 class="section-title">Building at the intersection of AI and community.</h2>
+          <div class="about-text">
+            <p><strong>I'm Salman</strong> — a 17-year-old tech innovator and community leader from Kazakhstan, passionate about artificial intelligence and software engineering. I co-founded a regional youth organization and build applied AI solutions for real businesses.</p>
+            <p>I split my time between writing code that automates real workflows and running programs that grow other young people into leaders. Both come from the same belief: <strong>impact compounds when you build systems</strong> — whether that system is software or a community.</p>
+            <p>Right now I'm focused on scaling what I've built, and on the next step: pursuing higher education in the United States.</p>
+          </div>
+          <div class="about-pillars">
+            <div class="pillar">
+              <span class="pillar-num">01</span>
+              <h4>Applied AI</h4>
+              <p>NLP &amp; automation systems shipped for live e-commerce businesses.</p>
+            </div>
+            <div class="pillar">
+              <span class="pillar-num">02</span>
+              <h4>Leadership</h4>
+              <p>Co-founded a youth community coordinating hundreds of volunteers.</p>
+            </div>
+            <div class="pillar">
+              <span class="pillar-num">03</span>
+              <h4>Discipline</h4>
+              <p>Olympiad mathematics and marathon running — built the same way.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VENTURES / EXPERIENCE ============ -->
+  <section id="ventures">
+    <div class="wrap">
+      <div class="eyebrow reveal">Experience</div>
+      <h2 class="section-title reveal">Ventures &amp; roles.</h2>
+      <p class="section-lede reveal">A timeline of what I've co-founded, built, and led — all of it started in 2025.</p>
+
+      <div class="timeline reveal">
+        <div class="t-item">
+          <div class="t-dot"></div>
+          <div class="t-period">2025 — Present</div>
+          <div class="t-card">
+            <div class="t-role">Co-Founder &amp; Lead Developer</div>
+            <span class="t-org">rinzoAI</span>
+            <p class="t-desc">Developed and launched an AI-powered WhatsApp manager that automates customer support and order processing for e-commerce businesses — built on applied NLP and the WhatsApp Business API.</p>
+            <a class="t-link" href="https://www.instagram.com/rinzo.ai" target="_blank" rel="noopener">View rinzoAI on Instagram →</a>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-dot"></div>
+          <div class="t-period">2025 — Present</div>
+          <div class="t-card">
+            <div class="t-role">Co-Founder &amp; Tech Mentor</div>
+            <span class="t-org">iStart Club</span>
+            <p class="t-desc">Co-founded a fast-growing youth community combining IT, volunteering, and leadership — managing hundreds of online and offline volunteers across programs.</p>
+            <a class="t-link" href="https://www.instagram.com/istart.club" target="_blank" rel="noopener">View iStart Club on Instagram →</a>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-dot"></div>
+          <div class="t-period">2025</div>
+          <div class="t-card">
+            <div class="t-role">Certified National Trainer</div>
+            <span class="t-org">Y-PEER Kazakhstan &amp; UNFPA</span>
+            <p class="t-desc">Completed the international Training of Trainers (ToT) program, then conducted leadership and peer-to-peer coaching workshops for dozens of gifted students nationwide.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="eyebrow reveal">Capabilities</div>
+      <h2 class="section-title reveal">What I work with.</h2>
+      <p class="section-lede reveal">Technical depth, the leadership skills to apply it, and the languages to operate across borders.</p>
+
+      <div class="skills-grid reveal">
+        <div class="skill-col">
+          <h4>Technical</h4>
+          <div class="tag-list">
+            <span class="tag">Artificial Intelligence</span>
+            <span class="tag">Applied NLP</span>
+            <span class="tag">WhatsApp Business API</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">Mathematics &amp; Data Analysis</span>
+          </div>
+        </div>
+        <div class="skill-col">
+          <h4>Leadership</h4>
+          <div class="tag-list">
+            <span class="tag">Project Management</span>
+            <span class="tag">Public Speaking</span>
+            <span class="tag">Community Building</span>
+            <span class="tag">Peer Coaching</span>
+          </div>
+        </div>
+        <div class="skill-col">
+          <h4>Languages</h4>
+          <div class="lang-rows">
+            <div class="lang-row">
+              <div class="lang-top"><span class="lang-name">Kazakh</span><span class="lang-level">Fluent</span></div>
+              <div class="lang-bar"><div class="lang-fill" data-fill="100"></div></div>
+            </div>
+            <div class="lang-row">
+              <div class="lang-top"><span class="lang-name">Uzbek</span><span class="lang-level">Fluent</span></div>
+              <div class="lang-bar"><div class="lang-fill" data-fill="100"></div></div>
+            </div>
+            <div class="lang-row">
+              <div class="lang-top"><span class="lang-name">Russian</span><span class="lang-level">Fluent</span></div>
+              <div class="lang-bar"><div class="lang-fill" data-fill="100"></div></div>
+            </div>
+            <div class="lang-row">
+              <div class="lang-top"><span class="lang-name">English</span><span class="lang-level">IELTS 6.0 · B2</span></div>
+              <div class="lang-bar"><div class="lang-fill" data-fill="68"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACHIEVEMENTS ============ -->
+  <section id="achievements">
+    <div class="wrap">
+      <div class="eyebrow reveal">Track record</div>
+      <h2 class="section-title reveal">Academic &amp; athletic achievements.</h2>
+      <p class="section-lede reveal">The same discipline shows up whether the clock is a competition timer or a race timer.</p>
+
+      <div class="ach-grid reveal-stagger">
+        <div class="ach-card">
+          <div class="ach-icon">01</div>
+          <h4>National Mathematics Olympiad "EduSpace"</h4>
+          <p>1st place, 2022 — competed against students nationwide in applied mathematics.</p>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon">02</div>
+          <h4>Regional Scientific Research Competition in Mathematics</h4>
+          <p>1st &amp; 2nd place across 10th–11th grade categories.</p>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon">03</div>
+          <h4>Almaty &amp; Kentau Marathons</h4>
+          <p>Top 10% finisher in both the Almaty Marathon (10K) and Kentau Marathon (5K).</p>
+        </div>
+        <div class="ach-photo">
+          <img src="IMG_2560 (2).PNG" alt="Salman Khalilov running the Almaty Marathon">
+          <div class="ach-photo-tag">
+            <div class="tag-label">Endurance</div>
+            <div class="tag-text">Crossing the line at the Almaty Marathon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section id="education">
+    <div class="wrap">
+      <div class="eyebrow reveal">Education</div>
+      <h2 class="section-title reveal">Where I've trained my thinking.</h2>
+      <div class="edu-card reveal">
+        <div>
+          <h3>N. Ondasynov Specialized Boarding School for Gifted Children</h3>
+          <div class="edu-sub">High School Diploma — Kazakhstan</div>
+        </div>
+        <div class="edu-status">In progress</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="contact-inner">
+        <div class="reveal">
+          <div class="eyebrow">Get in touch</div>
+          <h2>Let's build something <span class="accent">worth shipping.</span></h2>
+          <p class="contact-lede">Open to conversations about AI products, youth leadership programs, university opportunities, or just a good technical discussion.</p>
+          <a href="mailto:salmankhalilov5@gmail.com" class="btn btn-primary">Send me an email →</a>
+        </div>
+        <div class="reveal contact-list">
+          <div class="contact-row">
+            <span class="c-label">Email</span>
+            <a class="c-value" href="mailto:salmankhalilov5@gmail.com">salmankhalilov5@gmail.com<span class="c-arrow"> ↗</span></a>
+          </div>
+          <div class="contact-row">
+            <span class="c-label">Phone</span>
+            <a class="c-value" href="tel:+77058116963">+7 705 811 6963<span class="c-arrow"> ↗</span></a>
+          </div>
+          <div class="contact-row">
+            <span class="c-label">Instagram</span>
+            <a class="c-value" href="https://www.instagram.com/salman_kh_09" target="_blank" rel="noopener">@salman_kh_09<span class="c-arrow"> ↗</span></a>
+          </div>
+          <div class="contact-row">
+            <span class="c-label">Location</span>
+            <span class="c-value">Almaty, Kazakhstan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 SALMAN KHALILOV</span>
+    <span>DESIGNED &amp; BUILT FOR THE NEXT STEP</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============ MOBILE MENU ============ */
+const navToggle = document.getElementById('navToggle');
+const mobileLinks = document.getElementById('mobileLinks');
+if(navToggle && mobileLinks){
+  navToggle.addEventListener('click', ()=>{
+    const isOpen = navToggle.classList.toggle('open');
+    mobileLinks.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobileLinks.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      navToggle.classList.remove('open');
+      mobileLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+    });
+  });
+}
+
+/* ============ SCROLL REVEAL ============ */
+const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+if('IntersectionObserver' in window){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+} else {
+  revealEls.forEach(el=>el.classList.add('in'));
+}
+/* safety net: if anything is still hidden after load (e.g. JS hiccup), reveal it */
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{
+    revealEls.forEach(el=>el.classList.add('in'));
+  }, 2500);
+});
+
+/* language bars animate when in view */
+const langSection = document.querySelector('#skills');
+const langIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.lang-fill').forEach(f=>{
+        f.style.width = f.dataset.fill + '%';
+      });
+      langIO.disconnect();
+    }
+  });
+},{threshold:0.3});
+if(langSection) langIO.observe(langSection);
+
+/* ============ NAV ACTIVE STATE (subtle border on scroll) ============ */
+const navHeader = document.querySelector('header.nav');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 40){
+    navHeader.style.borderBottomColor = 'rgba(82,232,212,0.18)';
+  } else {
+    navHeader.style.borderBottomColor = '';
+  }
+});
+
+/* ============ 3D HERO CENTERPIECE ============ */
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas || typeof THREE === 'undefined') return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const wrap = canvas.parentElement;
+  let w = wrap.clientWidth, h = wrap.clientHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(48, w/h, 0.1, 100);
+  camera.position.set(0,0,11);
+
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(w,h);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  /* --- generate fibonacci sphere node points --- */
+  const NODE_COUNT = 70;
+  const radius = 4.2;
+  const points = [];
+  const golden = Math.PI * (3 - Math.sqrt(5));
+  for(let i=0;i<NODE_COUNT;i++){
+    const y = 1 - (i/(NODE_COUNT-1))*2;
+    const r = Math.sqrt(1-y*y);
+    const theta = golden * i;
+    const x = Math.cos(theta)*r;
+    const z = Math.sin(theta)*r;
+    points.push(new THREE.Vector3(x*radius, y*radius, z*radius));
+  }
+
+  /* node sprites (glow dots) */
+  const dotCanvas = document.createElement('canvas');
+  dotCanvas.width = 64; dotCanvas.height = 64;
+  const dctx = dotCanvas.getContext('2d');
+  const grad = dctx.createRadialGradient(32,32,0,32,32,32);
+  grad.addColorStop(0, 'rgba(82,232,212,1)');
+  grad.addColorStop(0.4, 'rgba(82,232,212,0.5)');
+  grad.addColorStop(1, 'rgba(82,232,212,0)');
+  dctx.fillStyle = grad;
+  dctx.fillRect(0,0,64,64);
+  const dotTexture = new THREE.CanvasTexture(dotCanvas);
+
+  const nodeGeo = new THREE.BufferGeometry().setFromPoints(points);
+  const nodeMat = new THREE.PointsMaterial({
+    size:0.34,
+    map:dotTexture,
+    transparent:true,
+    depthWrite:false,
+    blending:THREE.AdditiveBlending,
+    color:0x52e8d4
+  });
+  const nodesMesh = new THREE.Points(nodeGeo, nodeMat);
+  group.add(nodesMesh);
+
+  /* connect nearby nodes with thin lines */
+  const lineGeoPositions = [];
+  const K = 3;
+  for(let i=0;i<points.length;i++){
+    const dists = [];
+    for(let j=0;j<points.length;j++){
+      if(i===j) continue;
+      dists.push([points[i].distanceTo(points[j]), j]);
+    }
+    dists.sort((a,b)=>a[0]-b[0]);
+    for(let k=0;k<K;k++){
+      const j = dists[k][1];
+      lineGeoPositions.push(points[i].x, points[i].y, points[i].z);
+      lineGeoPositions.push(points[j].x, points[j].y, points[j].z);
+    }
+  }
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(lineGeoPositions, 3));
+  const lineMat = new THREE.LineBasicMaterial({
+    color:0x4a5a8f,
+    transparent:true,
+    opacity:0.28,
+    blending:THREE.AdditiveBlending
+  });
+  const linesMesh = new THREE.LineSegments(lineGeo, lineMat);
+  group.add(linesMesh);
+
+  /* faint outer wireframe sphere for structure */
+  const wireGeo = new THREE.IcosahedronGeometry(radius+0.55, 1);
+  const wireMat = new THREE.MeshBasicMaterial({color:0x8b7fff, wireframe:true, transparent:true, opacity:0.06});
+  const wireMesh = new THREE.Mesh(wireGeo, wireMat);
+  group.add(wireMesh);
+
+  /* a few accent violet nodes pulsing */
+  const accentIdx = [3, 17, 29, 41, 55, 63];
+  const accentPositions = accentIdx.map(i=>points[i]);
+  const accentGeo = new THREE.BufferGeometry().setFromPoints(accentPositions);
+  const accentMat = new THREE.PointsMaterial({
+    size:0.5, map:dotTexture, transparent:true, depthWrite:false,
+    blending:THREE.AdditiveBlending, color:0x8b7fff
+  });
+  const accentMesh = new THREE.Points(accentGeo, accentMat);
+  group.add(accentMesh);
+
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', (e)=>{
+    mouseX = (e.clientX / window.innerWidth - 0.5);
+    mouseY = (e.clientY / window.innerHeight - 0.5);
+  });
+
+  function resize(){
+    w = wrap.clientWidth; h = wrap.clientHeight;
+    if(w===0||h===0) return;
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w,h);
+  }
+  window.addEventListener('resize', resize);
+
+  let t = 0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t += reducedMotion ? 0.0015 : 0.0035;
+    group.rotation.y = t;
+    group.rotation.x = Math.sin(t*0.5)*0.15;
+
+    if(!reducedMotion){
+      group.rotation.y += mouseX*0.0006;
+      group.rotation.x += mouseY*0.0006;
+    }
+
+    const pulse = Math.sin(t*6) * 0.5 + 0.5;
+    accentMat.size = 0.42 + pulse*0.22;
+    accentMat.opacity = 0.6 + pulse*0.4;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+
+</body>
+</html>
